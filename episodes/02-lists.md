@@ -21,23 +21,11 @@ exercises: 15
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-In the previous episode, we analyzed a single file of clinical trial inflammation data. However,
-after finding some peculiar and potentially suspicious trends in the trial data we ask
-Dr. Maverick if they have performed any other clinical trials. Surprisingly, they say that they
-have and provide us with 11 more CSV files for a further 11 clinical trials they have undertaken
-since the initial trial.
-
-Our goal now is to process all the inflammation data we have, which means that we still have
-eleven more files to go!
-
-The natural first step is to collect the names of all the files that we have to process. In Python,
-a list is a way to store multiple values together. In this episode, we will learn how to store
+In Python, a list is a way to store multiple values together. In this episode, we will learn how to store
 multiple values in a list as well as how to work with lists.
 
 ## Python lists
 
-Unlike NumPy arrays, lists are built into the language so we do not have to load a library
-to use them.
 We create a list by putting values inside square brackets and separating the values with commas:
 
 ```python
@@ -169,7 +157,7 @@ Since a list can contain any Python variables, it can even contain other lists.
 For example, you could represent the products on the shelves of a small grocery shop
 as a nested list called `veg`:
 
-![](fig/04_groceries_veg.png){alt='veg is represented as a shelf full of produce. There are three rows of vegetableson the shelf, and each row contains three baskets of vegetables. We can labeleach basket according to the type of vegetable it contains, so the top rowcontains (from left to right) lettuce, lettuce, and peppers.'}
+![](fig/04_groceries_veg.png){alt='veg is represented as a shelf full of produce. There are three rows of vegetables on the shelf, and each row contains three baskets of vegetables. We can label each basket according to the type of vegetable it contains, so the top row contains (from left to right) lettuce, lettuce, and peppers.'}
 
 To store the contents of the shelf in a nested list, you write it this way:
 
@@ -183,7 +171,7 @@ Here are some visual examples of how indexing a list of lists `veg` works. First
 you can reference each row on the shelf as a separate list. For example, `veg[2]`
 represents the bottom row, which is a list of the baskets in that row.
 
-![](fig/04_groceries_veg0.png){alt='veg is now shown as a list of three rows, with veg\[0\] representing the top row ofthree baskets, veg\[1\] representing the second row, and veg\[2\] representing the bottom row.'}
+![](fig/04_groceries_veg0.png){alt='veg is now shown as a list of three rows, with veg\[0\] representing the top row of three baskets, veg\[1\] representing the second row, and veg\[2\] representing the bottom row.'}
 
 Index operations using the image would work like this:
 
@@ -206,7 +194,7 @@ print(veg[0])
 To reference a specific basket on a specific shelf, you use two indexes. The first
 index represents the row (from top to bottom) and the second index represents
 the specific basket (from left to right).
-![](fig/04_groceries_veg00.png){alt='veg is now shown as a two-dimensional grid, with each basket labeled according toits index in the nested list. The first index is the row number and the secondindex is the basket number, so veg\[1\]\[3\] represents the basket on the far rightside of the second row (basket 4 on row 2): zucchini'}
+![](fig/04_groceries_veg00.png){alt='veg is now shown as a two-dimensional grid, with each basket labeled according to its index in the nested list. The first index is the row number and the second index is the basket number, so veg\[1\]\[3\] represents the basket on the far right side of the second row (basket 4 on row 2): zucchini'}
 
 ```python
 print(veg[0][0])
@@ -307,8 +295,7 @@ primes: [3, 5, 7, 2]
 odds: [3, 5, 7]
 ```
 
-Subsets of lists and strings can be accessed by specifying ranges of values in brackets,
-similar to how we accessed ranges of positions in a NumPy array.
+Subsets of lists and strings can be accessed by specifying ranges of values in brackets.
 This is commonly referred to as "slicing" the list/string.
 
 ```python

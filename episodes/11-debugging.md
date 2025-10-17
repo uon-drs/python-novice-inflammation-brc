@@ -90,7 +90,7 @@ scientists tend to do the following:
   Data analysts frequently use simple visualizations to check both
   the science they're doing
   and the correctness of their code
-  (just as we did in the [opening lesson](02-numpy.html) of this tutorial).
+  (just as we did in the [opening lesson](05-numpy.html) of this tutorial).
   This should only be used for debugging as a last resort,
   though,
   since it's very hard to compare two visualizations automatically.
@@ -212,7 +212,7 @@ most version control systems (e.g. git, Mercurial) have:
 
 And speaking of help:
 if we can't find a bug in 10 minutes,
-we should *be humble* and ask for help.
+we should *be humble* and [ask for help](./01-intro.md#getting-help).
 Explaining the problem to someone else is often useful,
 since hearing what we're thinking helps us spot inconsistencies and hidden assumptions.
 If you don't have someone nearby to share your problem description with, get a

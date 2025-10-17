@@ -17,6 +17,16 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+In the previous episode, we analyzed a single file of clinical trial inflammation data. However,
+after finding some peculiar and potentially suspicious trends in the trial data we ask
+Dr. Maverick if they have performed any other clinical trials. Surprisingly, they say that they
+have and provide us with 11 more CSV files for a further 11 clinical trials they have undertaken
+since the initial trial.
+
+Our goal now is to process all the inflammation data we have, which means that we still have
+eleven more files to go!
+
+The natural first step is to collect the names of all the files that we have to process.
 As a final piece to processing our inflammation data, we need a way to get a list of all the files
 in our `data` directory whose names start with `inflammation-` and end with `.csv`.
 The following library will help us to achieve this:
@@ -48,6 +58,16 @@ This means we can loop over it
 to do something with each filename in turn.
 In our case,
 the "something" we want to do is generate a set of plots for each file in our inflammation dataset.
+
+In the episode about visualizing data,
+we wrote Python code that plots values of interest from our first
+inflammation dataset (`inflammation-01.csv`), which revealed some suspicious features in it.
+
+![](fig/03-loop_2_0.png){alt="Line graphs showing average, maximum and minimum inflammation across all patients over a 40-day period."}
+
+We have a dozen data sets right now and potentially more on the way if Dr. Maverick
+can keep up their surprisingly fast clinical trial rate. We want to create plots for all of
+our data sets with a single statement.
 
 If we want to start by analyzing just the first three files in alphabetical order, we can use the
 `sorted` built-in function to generate a new sorted list from the `glob.glob` output:
@@ -93,13 +113,13 @@ inflammation-01.csv
 inflammation-02.csv
 ```
 
-![](fig/03-loop_49_3.png){alt='Output from the second iteration of the for loop. Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period for all patients in the seconddataset.'}
+![](fig/03-loop_49_3.png){alt='Output from the second iteration of the for loop. Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period for all patients in the second dataset.'}
 
 ```output
 inflammation-03.csv
 ```
 
-![](fig/03-loop_49_5.png){alt='Output from the third iteration of the for loop. Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period for all patients in the thirddataset.'}
+![](fig/03-loop_49_5.png){alt='Output from the third iteration of the for loop. Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period for all patients in the third dataset.'}
 
 The plots generated for the second clinical trial file look very similar to the plots for
 the first file: their average plots show similar "noisy" rises and falls; their maxima plots
@@ -111,12 +131,136 @@ the first two datasets, however the minima plot shows that the third dataset min
 consistently zero across every day of the trial. If we produce a heat map for the third data file
 we see the following:
 
-![](fig/inflammation-03-imshow.svg){alt='Heat map of the third inflammation dataset. Note that there are sporadic zero values throughoutthe entire dataset, and the last patient only has zero values over the 40 day study.'}
+![](fig/inflammation-03-imshow.svg){alt='Heat map of the third inflammation dataset. Note that there are sporadic zero values throughout the entire dataset, and the last patient only has zero values over the 40 day study.'}
 
 We can see that there are zero values sporadically distributed across all patients and days of the
 clinical trial, suggesting that there were potential issues with data collection throughout the
 trial. In addition, we can see that the last patient in the study didn't have any inflammation
 flare-ups at all throughout the trial, suggesting that they may not even suffer from arthritis!
+
+
+## Checking our Data
+
+How can we use Python to automatically recognize the different features we saw,
+and take a different action for each? 
+
+We can use conditionals to check for the suspicious features we saw in our inflammation data.
+We are about to use functions provided by the `numpy` module again.
+Therefore, if you're working in a new Python session, make sure to load the
+module and data with:
+
+```python
+import numpy
+data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+```
+
+From the first couple of plots, we saw that maximum daily inflammation exhibits
+a strange behavior and raises one unit a day.
+Wouldn't it be a good idea to detect such behavior and report it as suspicious?
+Let's do that!
+However, instead of checking every single day of the study, let's merely check
+if maximum inflammation in the beginning (day 0) and in the middle (day 20) of
+the study are equal to the corresponding day numbers.
+
+```python
+max_inflammation_0 = numpy.amax(data, axis=0)[0]
+max_inflammation_20 = numpy.amax(data, axis=0)[20]
+
+if max_inflammation_0 == 0 and max_inflammation_20 == 20:
+    print('Suspicious looking maxima!')
+```
+
+We also saw a different problem in the third dataset;
+the minima per day were all zero (looks like a healthy person snuck into our study).
+We can also check for this with an `elif` condition:
+
+```python
+elif numpy.sum(numpy.amin(data, axis=0)) == 0:
+    print('Minima add up to zero!')
+```
+
+And if neither of these conditions are true, we can use `else` to give the all-clear:
+
+```python
+else:
+    print('Seems OK!')
+```
+
+Let's test that out:
+
+```python
+data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+
+max_inflammation_0 = numpy.amax(data, axis=0)[0]
+max_inflammation_20 = numpy.amax(data, axis=0)[20]
+
+if max_inflammation_0 == 0 and max_inflammation_20 == 20:
+    print('Suspicious looking maxima!')
+elif numpy.sum(numpy.amin(data, axis=0)) == 0:
+    print('Minima add up to zero!')
+else:
+    print('Seems OK!')
+```
+
+```output
+Suspicious looking maxima!
+```
+
+```python
+data = numpy.loadtxt(fname='inflammation-03.csv', delimiter=',')
+
+max_inflammation_0 = numpy.amax(data, axis=0)[0]
+max_inflammation_20 = numpy.amax(data, axis=0)[20]
+
+if max_inflammation_0 == 0 and max_inflammation_20 == 20:
+    print('Suspicious looking maxima!')
+elif numpy.sum(numpy.amin(data, axis=0)) == 0:
+    print('Minima add up to zero!')
+else:
+    print('Seems OK!')
+```
+
+```output
+Minima add up to zero!
+```
+
+In this way,
+we have asked Python to do something different depending on the condition of our data.
+Here we printed messages in all cases,
+but we could also imagine not using the `else` catch-all
+so that messages are only printed when something is wrong,
+freeing us from having to manually examine every plot for features we've seen before.
+
+We can repeat this process for the remaining files:
+
+```python
+import glob
+import numpy
+
+filenames = sorted(glob.glob('inflammation*.csv'))
+filenames = filenames[0:3]
+for filename in filenames:
+    print(filename)
+
+    data = numpy.loadtxt(fname=filename, delimiter=',')
+
+    if numpy.amax(data, axis=0)[0] == 0 and numpy.amax(data, axis=0)[20] == 20:
+        print('Suspicious looking maxima!')
+    elif numpy.sum(numpy.amin(data, axis=0)) == 0:
+        print('Minima add up to zero!')
+    else:
+        print('Seems OK!')
+```
+
+```output
+inflammation-01.csv
+Suspicious looking maxima!
+inflammation-02.csv
+Suspicious looking maxima!
+inflammation-03.csv
+Minima add up to zero!
+```
+
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 

@@ -17,11 +17,7 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-In our last lesson, we discovered something suspicious was going on
-in our inflammation data by drawing some plots.
-How can we use Python to automatically recognize the different features we saw,
-and take a different action for each? In this lesson, we'll learn how to write code that
-runs only when certain conditions are true.
+In this lesson, we'll learn how to write code that runs only when certain conditions are true.
 
 ## Conditionals
 
@@ -149,98 +145,7 @@ at least one test is true
 which represent truth values. A statement such as `1 < 0` returns
 the value `False`, while `-1 < 0` returns the value `True`.
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-## Checking our Data
-
-Now that we've seen how conditionals work,
-we can use them to check for the suspicious features we saw in our inflammation data.
-We are about to use functions provided by the `numpy` module again.
-Therefore, if you're working in a new Python session, make sure to load the
-module and data with:
-
-```python
-import numpy
-data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
-```
-
-From the first couple of plots, we saw that maximum daily inflammation exhibits
-a strange behavior and raises one unit a day.
-Wouldn't it be a good idea to detect such behavior and report it as suspicious?
-Let's do that!
-However, instead of checking every single day of the study, let's merely check
-if maximum inflammation in the beginning (day 0) and in the middle (day 20) of
-the study are equal to the corresponding day numbers.
-
-```python
-max_inflammation_0 = numpy.amax(data, axis=0)[0]
-max_inflammation_20 = numpy.amax(data, axis=0)[20]
-
-if max_inflammation_0 == 0 and max_inflammation_20 == 20:
-    print('Suspicious looking maxima!')
-```
-
-We also saw a different problem in the third dataset;
-the minima per day were all zero (looks like a healthy person snuck into our study).
-We can also check for this with an `elif` condition:
-
-```python
-elif numpy.sum(numpy.amin(data, axis=0)) == 0:
-    print('Minima add up to zero!')
-```
-
-And if neither of these conditions are true, we can use `else` to give the all-clear:
-
-```python
-else:
-    print('Seems OK!')
-```
-
-Let's test that out:
-
-```python
-data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
-
-max_inflammation_0 = numpy.amax(data, axis=0)[0]
-max_inflammation_20 = numpy.amax(data, axis=0)[20]
-
-if max_inflammation_0 == 0 and max_inflammation_20 == 20:
-    print('Suspicious looking maxima!')
-elif numpy.sum(numpy.amin(data, axis=0)) == 0:
-    print('Minima add up to zero!')
-else:
-    print('Seems OK!')
-```
-
-```output
-Suspicious looking maxima!
-```
-
-```python
-data = numpy.loadtxt(fname='inflammation-03.csv', delimiter=',')
-
-max_inflammation_0 = numpy.amax(data, axis=0)[0]
-max_inflammation_20 = numpy.amax(data, axis=0)[20]
-
-if max_inflammation_0 == 0 and max_inflammation_20 == 20:
-    print('Suspicious looking maxima!')
-elif numpy.sum(numpy.amin(data, axis=0)) == 0:
-    print('Minima add up to zero!')
-else:
-    print('Seems OK!')
-```
-
-```output
-Minima add up to zero!
-```
-
-In this way,
-we have asked Python to do something different depending on the condition of our data.
-Here we printed messages in all cases,
-but we could also imagine not using the `else` catch-all
-so that messages are only printed when something is wrong,
-freeing us from having to manually examine every plot for features we've seen before.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -571,5 +476,3 @@ print('The number of vowels in this string is ' + str(count))
 - `True` and `False` represent truth values.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-

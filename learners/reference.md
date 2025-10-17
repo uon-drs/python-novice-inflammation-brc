@@ -57,6 +57,10 @@ depending on whether a test is true or false.
 :   (CSV) A common textual representation for tables
 in which the values in each row are separated by commas.
 
+[debug](#debug)
+:   The action of finding and resolving errors (also known as 'bugs') 
+within computer programs or systems.
+
 [default value]{#default-value}
 :   A value to use for a [parameter](#parameter) if nothing is specified explicitly.
 
@@ -296,4 +300,5 @@ See also: [syntax error](#syntax-error).
 :   A loop that keeps executing as long as some condition is true.
 See also: [for loop](#for-loop).
 
-
+[whitespace]{#whitespace}
+:   The space, newline, carriage return, and horizontal and vertical tab characters that take up space but do not create a visible mark.

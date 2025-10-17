@@ -58,29 +58,28 @@ contact: 'team@carpentries.org'
 # - another-learner.md
 
 # Order of episodes in your lesson
-episodes:
+episodes: 
 - 01-intro.md
-- 02-numpy.md
-- 03-matplotlib.md
-- 03a-linear-regressions.md
-- 04-lists.md
-- 05-loop.md
-- 06-files.md
-- 07-cond.md
-- 08-func.md
+- 02-lists.md
+- 03-loops.md
+- 04-conditionals.md
+- 05-numpy.md
+- 06-matplotlib.md
+- 07-files.md
+- 08-functions.md
 - 09-errors.md
 - 10-defensive.md
 - 11-debugging.md
 - 12-cmdline.md
 
 # Information for Learners
-learners:
+learners: 
 
 # Information for Instructors
-instructors:
+instructors: 
 
 # Learner Profiles
-profiles:
+profiles: 
 
 # Customisation ---------------------------------------------
 #
