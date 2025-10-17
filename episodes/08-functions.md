@@ -226,7 +226,7 @@ def visualize(filename):
     matplotlib.pyplot.show()
 ```
 
-and another function called `detect_problems` that checks for those systematics
+We'll add another function called `detect_problems` that checks for those systematics
 we noticed:
 
 ```python
@@ -909,7 +909,7 @@ def numbers(one, two=2, three, four=4):
 print(numbers(1, three=3))
 ```
 
-what do you expect will be printed?  What is actually printed?
+What do you expect will be printed?  What is actually printed?
 What rule do you think Python is following?
 
 1. `1234`
@@ -975,7 +975,6 @@ could be further improved to make them more readable.
 - Variables created outside of any function are called global variables.
 - Within a function, we can access global variables.
 - Variables created within a function override global variables if their names match.
-- Use `help(thing)` to view help for something.
 - Put docstrings in functions to provide help for that function.
 - Specify default values for parameters when defining a function using `name=value` in the parameter list.
 - Parameters can be passed by matching based on name, by position, or by omitting them (in which case the default value is used).

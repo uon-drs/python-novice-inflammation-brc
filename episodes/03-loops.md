@@ -19,16 +19,7 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-In the episode about visualizing data,
-we wrote Python code that plots values of interest from our first
-inflammation dataset (`inflammation-01.csv`), which revealed some suspicious features in it.
-
-![](fig/03-loop_2_0.png){alt="Line graphs showing average, maximum and minimum inflammation across all patients over a 40-dayperiod."}
-
-We have a dozen data sets right now and potentially more on the way if Dr. Maverick
-can keep up their surprisingly fast clinical trial rate. We want to create plots for all of
-our data sets with a single statement. To do that, we'll have to teach the computer how to
-repeat things.
+In this episode, we'll teach the computer how to repeat things.
 
 An example task that we might want to repeat is accessing numbers in a list,
 which we
@@ -61,7 +52,7 @@ print(odds[3])
 This is a bad approach for three reasons:
 
 1. **Not scalable**. Imagine you need to print a list that has hundreds
-  of elements.  It might be easier to type them in manually.
+  of elements. It might be easier to type them in manually.
 
 2. **Difficult to maintain**. If we want to decorate each printed element with an
   asterisk or any other character, we would have to change four lines of code. While
@@ -142,7 +133,7 @@ for variable in collection:
 
 Using the odds example above, the loop might look like this:
 
-![](fig/05-loops_image_num.png){alt="Loop variable 'num' being assigned the value of each element in the list odds in turn andthen being printed"}
+![](fig/05-loops_image_num.png){alt="Loop variable 'num' being assigned the value of each element in the list odds in turn and then being printed"}
 
 where each number (`num`) in the variable `odds` is looped through and printed one number after
 another. The other numbers in the diagram denote which loop cycle the number was printed in (1
@@ -159,7 +150,7 @@ of the loop body (e.g. `end for`); everything indented after the `for` statement
 
 In the example above, the loop variable was given the name `num` as a mnemonic;
 it is short for 'number'.
-We can choose any name we want for variables.  We might just as easily have chosen the name
+We can choose any name we want for variables. We might just as easily have chosen the name
 `banana` for the loop variable, as long as we use the same name when we invoke the variable inside
 the loop:
 
@@ -378,7 +369,7 @@ print(summed)
 
 ## Computing the Value of a Polynomial
 
-The built-in function `enumerate` takes a sequence (e.g. a [list](04-lists.md)) and
+The built-in function `enumerate` takes a sequence (e.g. a [list](02-lists.md)) and
 generates a new sequence of the same length. Each element of the new sequence is a pair composed
 of the index (0, 1, 2,...) and the value from the original sequence:
 
@@ -392,7 +383,7 @@ The code above loops through `a_list`, assigning the index to `idx` and the valu
 Suppose you have encoded a polynomial as a list of coefficients in
 the following way: the first element is the constant term, the
 second element is the coefficient of the linear term, the third is the
-coefficient of the quadratic term, etc.
+coefficient of the quadratic term, where the polynomial is of the form $ax^0 + bx^1 + cx^2$.
 
 ```python
 x = 5
