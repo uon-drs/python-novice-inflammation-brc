@@ -31,7 +31,6 @@ This lesson is also available in [R] and [MATLAB].
 | 1   | [Python Fundamentals][episode01]        | 30   | What basic data types can I work with in Python?<br>How can I create a new variable in Python?<br>Can I change the value associated with a variable after I create it?                             |
 | 2   | [Analyzing Patient Data][episode02]        | 60   | How can I process tabular data files in Python?                              |
 | 3   | [Visualizing Tabular Data][episode03]        | 50   | How can I visualize tabular data in Python?<br>How can I group several plots together?                                  |
-| 3a  | [Linear Regressions with scikit-learn][episode03a]        | 20   | How can I perform linear regressions in Python?<br>What are the common packages out there?                                  |
 | 4   | [Storing Multiple Values in Lists][episode04]        | 30   | How can I store many values together?                                        |
 | 5   | [Repeating Actions with Loops][episode05]        | 30   | How can I do the same operations on many different values?                   |
 | 6   | [Analyzing Data from Multiple Files][episode06]        | 20   | How can I do the same operations on many different files?                    |
@@ -80,8 +79,7 @@ Software Carpentry is a volunteer project that teaches basic computing skills to
 
 ## About The Carpentries
 
-The Carpentries is a fiscally sponsored project of [Community Initiatives][community-initiatives],
-a registered 501(c)3 non-profit organisation based in California, USA. We are a global community
+The Carpentries is a registered 501(c)3 non-profit organisation based in Delaware, USA. We are a global community
 teaching foundational computational and data science skills to researchers in academia,
 industry and government. More information can be found [here][cp-about].
 
@@ -95,19 +93,18 @@ industry and government. More information can be found [here][cp-about].
 [good-practices]: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510
 [R]: https://github.com/swcarpentry/r-novice-inflammation
 [MATLAB]: https://github.com/swcarpentry/matlab-novice-inflammation
-[episode01]: https://swcarpentry.github.io/python-novice-inflammation/01-intro/index.html
-[episode02]: https://swcarpentry.github.io/python-novice-inflammation/02-numpy/index.html
-[episode03]: https://swcarpentry.github.io/python-novice-inflammation/03-matplotlib/index.html
-[episode03a]: https://swcarpentry.github.io/python-novice-inflammation/03a-linear-regression/index.html
-[episode04]: https://swcarpentry.github.io/python-novice-inflammation/04-lists/index.html
-[episode05]: https://swcarpentry.github.io/python-novice-inflammation/05-loop/index.html
-[episode06]: https://swcarpentry.github.io/python-novice-inflammation/06-files/index.html
-[episode07]: https://swcarpentry.github.io/python-novice-inflammation/07-cond/index.html
-[episode08]: https://swcarpentry.github.io/python-novice-inflammation/08-func/index.html
-[episode09]: https://swcarpentry.github.io/python-novice-inflammation/09-errors/index.html
-[episode10]: https://swcarpentry.github.io/python-novice-inflammation/10-defensive/index.html
-[episode11]: https://swcarpentry.github.io/python-novice-inflammation/11-debugging/index.html
-[episode12]: https://swcarpentry.github.io/python-novice-inflammation/12-cmdline/index.html
+[episode01]: https://swcarpentry.github.io/python-novice-inflammation/01-intro.html
+[episode02]: https://swcarpentry.github.io/python-novice-inflammation/02-lists.html
+[episode03]: https://swcarpentry.github.io/python-novice-inflammation/03-loops.html
+[episode04]: https://swcarpentry.github.io/python-novice-inflammation/04-conditionals.html
+[episode05]: https://swcarpentry.github.io/python-novice-inflammation/05-numpy.html
+[episode06]: https://swcarpentry.github.io/python-novice-inflammation/06-matplotlib.html
+[episode07]: https://swcarpentry.github.io/python-novice-inflammation/07-files.html
+[episode08]: https://swcarpentry.github.io/python-novice-inflammation/08-functions.html
+[episode09]: https://swcarpentry.github.io/python-novice-inflammation/09-errors.html
+[episode10]: https://swcarpentry.github.io/python-novice-inflammation/10-defensive.html
+[episode11]: https://swcarpentry.github.io/python-novice-inflammation/11-debugging.html
+[episode12]: https://swcarpentry.github.io/python-novice-inflammation/12-cmdline.html
 [travis_url]: https://travis-ci.org/swcarpentry/python-novice-inflammation
 [travis_svg]: https://travis-ci.org/swcarpentry/python-novice-inflammation.svg?branch=gh-pages
 [lesson-example]: https://carpentries.github.io/lesson-example
